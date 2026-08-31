@@ -114,6 +114,36 @@ Defined in `compose.yaml` (managed by Sail):
 > **name:** frontend-design
 > **description:** Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
 
+## Project Color Palette
+
+> **This is a project-specific directive that overrides generic color defaults.**
+> The Coconut Sugar Management web must incorporate **blue** as its primary brand color across all UI. Every page, component, and design decision must reflect this.
+
+### Palette
+
+| Role | Name | Hex | Usage |
+|---|---|---|---|
+| **Primary** | Ocean Blue | `#1E40AF` | Buttons, active states, links, key CTAs |
+| **Primary Light** | Sky Blue | `#3B82F6` | Hover states, icons, accents, badges |
+| **Primary Pale** | Blue Tint | `#EFF6FF` | Backgrounds for cards, table headers, highlights |
+| **Primary Dark** | Deep Navy | `#1E3A5F` | Sidebar, navbar, headers, dark mode base |
+| **Neutral Dark** | Slate 900 | `#0F172A` | Body text, headings |
+| **Neutral Mid** | Slate 400 | `#94A3B8` | Placeholder text, secondary labels |
+| **Neutral Light** | Slate 50 | `#F8FAFC` | Page backgrounds, empty states |
+| **Success** | Emerald | `#10B981` | Status: selesai, lunas, aktif |
+| **Warning** | Amber | `#F59E0B` | Status: pending, proses |
+| **Danger** | Rose | `#F43F5E` | Error, hapus, batal |
+
+### Rules
+
+- **Blue is the identity.** Every page must feel distinctively blue — not as decoration, but as structure. Navbar, sidebar, primary buttons, and active states are all blue.
+- **Use `#1E40AF` for primary actions** (simpan, submit, konfirmasi). Never use generic gray or black buttons for primary CTAs.
+- **Background stays light.** Use `#F8FAFC` (Slate 50) as the page background — the blue makes its statement through components, not through overwhelming the background.
+- **Avoid flat blue everywhere.** Use the full range: dark navy for structure, ocean blue for interactions, sky blue for accents, and blue tint for subtle surface differentiation.
+- **Tables**: header rows use `#EFF6FF` (Blue Tint), active row highlight uses `#DBEAFE`.
+- **Typography on blue surfaces** must always be white (`#FFFFFF`) or very light (`#E0F2FE`). Never use dark text directly on blue backgrounds darker than `#3B82F6`.
+
+
 ## Approach
 
 Approach this as the design lead at a small studio known for giving every client a visual identity that could not be mistaken for anyone else's. This client has already rejected proposals that felt templated, and is paying for a distinctive point of view: make deliberate, opinionated choices about palette, typography, and layout that are specific to this brief, and take one real aesthetic risk you can justify.
@@ -240,7 +270,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 # Git Workflow
 
-> All code changes must go through a new branch and a pull request. Do not push directly to `main`.
+> All code changes must go through a new branch and a pull request. Do not push directly to `master`.
 
 ## Rules
 
@@ -250,8 +280,8 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
   - `refactor/component-name` — for refactoring
   - `docs/document-name` — for documentation changes
 - **Commit with a clear message** using the format: `type: short description` (e.g., `feature: add login page`)
-- **Create a pull request** to the main branch (`main`) once changes are complete.
-- **Do not commit directly to `main`.**
+- **Create a pull request** to the master branch (`master`) once changes are complete.
+- **Do not commit directly to `master`.**
 
 ---
 
