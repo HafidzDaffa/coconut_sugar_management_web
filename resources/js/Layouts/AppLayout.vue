@@ -50,21 +50,21 @@ const logout = () => {
                 </Link>
 
                 <Link
-                    href="/cabang"
+                    href="/branches"
                     class="nav-item"
-                    :class="{ 'nav-item--active': currentUrl.startsWith('/cabang') }"
+                    :class="{ 'nav-item--active': currentUrl.startsWith('/branches') }"
                 >
                     <svg viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1a1 1 0 011-1h1a1 1 0 011 1v1a1 1 0 01-1 1H8a1 1 0 01-1-1V5zm1 4a1 1 0 00-1 1v1a1 1 0 001 1h1a1 1 0 001-1v-1a1 1 0 00-1-1H8zm3-4a1 1 0 011-1h1a1 1 0 011 1v1a1 1 0 01-1 1h-1a1 1 0 01-1-1V5zm1 4a1 1 0 00-1 1v1a1 1 0 001 1h1a1 1 0 001-1v-1a1 1 0 00-1-1h-1z" clip-rule="evenodd" />
                     </svg>
-                    Cabang
+                    Branches
                 </Link>
 
                 <a href="#" class="nav-item">
                     <svg viewBox="0 0 20 20" fill="currentColor">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                     </svg>
-                    Pengguna
+                    Users
                 </a>
             </nav>
 
@@ -72,7 +72,7 @@ const logout = () => {
                 <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/>
                 </svg>
-                Keluar
+                Sign Out
             </button>
         </aside>
 
@@ -82,7 +82,7 @@ const logout = () => {
             <header class="topbar">
                 <div>
                     <h1 class="page-title">{{ title }}</h1>
-                    <p class="page-subtitle">Sistem Manajemen Kelapa Gula Terpadu</p>
+                    <p class="page-subtitle">Integrated Coconut Sugar Operations & Management</p>
                 </div>
                 <div class="user-badge">
                     <div class="user-avatar">{{ user.name.charAt(0) }}</div>

@@ -18,9 +18,9 @@ const user = computed(() => page.props.auth?.user || { name: 'User', role: 'supe
                     </svg>
                 </div>
                 <div>
-                    <p class="stat-label">Total Produksi</p>
+                    <p class="stat-label">Total Production</p>
                     <p class="stat-value">0 kg</p>
-                    <p class="stat-change">Bulan ini</p>
+                    <p class="stat-change">This month</p>
                 </div>
             </div>
             <div class="stat-card stat-card--emerald">
@@ -31,9 +31,9 @@ const user = computed(() => page.props.auth?.user || { name: 'User', role: 'supe
                     </svg>
                 </div>
                 <div>
-                    <p class="stat-label">Total Pendapatan</p>
-                    <p class="stat-value">Rp 0</p>
-                    <p class="stat-change">Bulan ini</p>
+                    <p class="stat-label">Total Revenue</p>
+                    <p class="stat-value">$ 0</p>
+                    <p class="stat-change">This month</p>
                 </div>
             </div>
             <div class="stat-card stat-card--amber">
@@ -43,9 +43,9 @@ const user = computed(() => page.props.auth?.user || { name: 'User', role: 'supe
                     </svg>
                 </div>
                 <div>
-                    <p class="stat-label">Total Pekerja</p>
+                    <p class="stat-label">Active Workers</p>
                     <p class="stat-value">0</p>
-                    <p class="stat-change">Aktif</p>
+                    <p class="stat-change">Active</p>
                 </div>
             </div>
             <div class="stat-card stat-card--rose">
@@ -55,9 +55,9 @@ const user = computed(() => page.props.auth?.user || { name: 'User', role: 'supe
                     </svg>
                 </div>
                 <div>
-                    <p class="stat-label">Laporan Pending</p>
+                    <p class="stat-label">Pending Reports</p>
                     <p class="stat-value">0</p>
-                    <p class="stat-change">Perlu ditinjau</p>
+                    <p class="stat-change">Requires review</p>
                 </div>
             </div>
         </section>
@@ -65,8 +65,8 @@ const user = computed(() => page.props.auth?.user || { name: 'User', role: 'supe
         <!-- Welcome card -->
         <div class="welcome-card">
             <div class="welcome-text">
-                <h2>Sistem siap digunakan 🎉</h2>
-                <p>Dashboard berhasil dibuat. Anda dapat mengelola data <strong>Cabang</strong> melalui menu navigasi di sebelah kiri. Akun Anda terdaftar sebagai <strong>{{ user.role }}</strong>.</p>
+                <h2>System Ready 🎉</h2>
+                <p>Welcome to the Coconut Sugar Management platform. Manage your operational facilities via the <strong>Branches</strong> menu. You are signed in as <strong>{{ user.role }}</strong>.</p>
             </div>
             <div class="welcome-badge">
                 <span>{{ user.role }}</span>
