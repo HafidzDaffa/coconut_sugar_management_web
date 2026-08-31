@@ -17,6 +17,8 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('Dashboard/Index');
     })->name('dashboard');
 
+    Route::resource('cabang', \App\Http\Controllers\CabangController::class);
+
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
 
