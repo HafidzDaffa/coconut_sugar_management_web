@@ -1,139 +1,78 @@
 <script setup>
-import { usePage, router, Head } from '@inertiajs/vue3';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import { computed } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 
 const page = usePage();
 const user = computed(() => page.props.auth?.user || { name: 'User', role: 'superadmin' });
-
-const logout = () => {
-    router.post('/logout');
-};
 </script>
 
 <template>
-    <Head title="Dashboard" />
-
-    <div class="dashboard-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-brand">
-                <div class="sidebar-logo">
-                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 2C16 2 6 10 6 18C6 22.4 10.5 26 16 26C21.5 26 26 22.4 26 18C26 10 16 2 16 2Z" fill="white" fill-opacity="0.9"/>
-                        <circle cx="16" cy="18" r="4" fill="#1E3A5F"/>
+    <AppLayout title="Dashboard">
+        <!-- Stats Cards -->
+        <section class="stats-grid">
+            <div class="stat-card stat-card--blue">
+                <div class="stat-card-icon">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/>
                     </svg>
                 </div>
                 <div>
-                    <p class="sidebar-brand-name">CocoSugar</p>
-                    <p class="sidebar-brand-sub">Management</p>
+                    <p class="stat-label">Total Produksi</p>
+                    <p class="stat-value">0 kg</p>
+                    <p class="stat-change">Bulan ini</p>
                 </div>
             </div>
-
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item nav-item--active">
+            <div class="stat-card stat-card--emerald">
+                <div class="stat-card-icon">
                     <svg viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.077 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.077-2.354-1.253V5z" clip-rule="evenodd"/>
                     </svg>
-                    Dashboard
-                </a>
-                <a href="#" class="nav-item">
+                </div>
+                <div>
+                    <p class="stat-label">Total Pendapatan</p>
+                    <p class="stat-value">Rp 0</p>
+                    <p class="stat-change">Bulan ini</p>
+                </div>
+            </div>
+            <div class="stat-card stat-card--amber">
+                <div class="stat-card-icon">
                     <svg viewBox="0 0 20 20" fill="currentColor">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                     </svg>
-                    Pengguna
-                </a>
-            </nav>
-
-            <button @click="logout" class="logout-btn">
-                <svg viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/>
-                </svg>
-                Keluar
-            </button>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Bar -->
-            <header class="topbar">
+                </div>
                 <div>
-                    <h1 class="page-title">Dashboard</h1>
-                    <p class="page-subtitle">Selamat datang kembali, <strong>{{ user.name }}</strong></p>
-                </div>
-                <div class="user-badge">
-                    <div class="user-avatar">{{ user.name.charAt(0) }}</div>
-                    <div>
-                        <p class="user-name">{{ user.name }}</p>
-                        <p class="user-role">{{ user.role }}</p>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Stats Cards -->
-            <section class="stats-grid">
-                <div class="stat-card stat-card--blue">
-                    <div class="stat-card-icon">
-                        <svg viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="stat-label">Total Produksi</p>
-                        <p class="stat-value">0 kg</p>
-                        <p class="stat-change">Bulan ini</p>
-                    </div>
-                </div>
-                <div class="stat-card stat-card--emerald">
-                    <div class="stat-card-icon">
-                        <svg viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.077 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.077-2.354-1.253V5z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="stat-label">Total Pendapatan</p>
-                        <p class="stat-value">Rp 0</p>
-                        <p class="stat-change">Bulan ini</p>
-                    </div>
-                </div>
-                <div class="stat-card stat-card--amber">
-                    <div class="stat-card-icon">
-                        <svg viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="stat-label">Total Pekerja</p>
-                        <p class="stat-value">0</p>
-                        <p class="stat-change">Aktif</p>
-                    </div>
-                </div>
-                <div class="stat-card stat-card--rose">
-                    <div class="stat-card-icon">
-                        <svg viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="stat-label">Laporan Pending</p>
-                        <p class="stat-value">0</p>
-                        <p class="stat-change">Perlu ditinjau</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Welcome card -->
-            <div class="welcome-card">
-                <div class="welcome-text">
-                    <h2>Sistem siap digunakan 🎉</h2>
-                    <p>Dashboard berhasil dibuat. Fitur produksi, keuangan, dan laporan akan tersedia segera. Akun Anda terdaftar sebagai <strong>{{ user.role }}</strong>.</p>
-                </div>
-                <div class="welcome-badge">
-                    <span>{{ user.role }}</span>
+                    <p class="stat-label">Total Pekerja</p>
+                    <p class="stat-value">0</p>
+                    <p class="stat-change">Aktif</p>
                 </div>
             </div>
-        </main>
-    </div>
+            <div class="stat-card stat-card--rose">
+                <div class="stat-card-icon">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="stat-label">Laporan Pending</p>
+                    <p class="stat-value">0</p>
+                    <p class="stat-change">Perlu ditinjau</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Welcome card -->
+        <div class="welcome-card">
+            <div class="welcome-text">
+                <h2>Sistem siap digunakan 🎉</h2>
+                <p>Dashboard berhasil dibuat. Anda dapat mengelola data <strong>Cabang</strong> melalui menu navigasi di sebelah kiri. Akun Anda terdaftar sebagai <strong>{{ user.role }}</strong>.</p>
+            </div>
+            <div class="welcome-badge">
+                <span>{{ user.role }}</span>
+            </div>
+        </div>
+    </AppLayout>
 </template>
 
 <style scoped>

@@ -378,13 +378,13 @@
       "degree": 5
     },
     {
-      "id": "app_providers_appserviceprovider_appserviceprovider",
-      "label": "AppServiceProvider",
+      "id": "database_factories_userfactory_userfactory",
+      "label": "UserFactory",
       "degree": 5
     },
     {
-      "id": "database_factories_userfactory_userfactory",
-      "label": "UserFactory",
+      "id": "app_providers_appserviceprovider_appserviceprovider",
+      "label": "AppServiceProvider",
       "degree": 5
     },
     {
@@ -395,17 +395,6 @@
   ],
   "surprises": [
     {
-      "source": "LoginController",
-      "target": "Controller",
-      "source_files": [
-        "app/Http/Controllers/Auth/LoginController.php",
-        "app/Http/Controllers/Controller.php"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "inherits",
-      "why": "cross-file semantic connection"
-    },
-    {
       "source": "ExampleTest",
       "target": "TestCase",
       "source_files": [
@@ -415,43 +404,21 @@
       "confidence": "EXTRACTED",
       "relation": "inherits",
       "why": "cross-file semantic connection"
+    },
+    {
+      "source": "LoginController",
+      "target": "Controller",
+      "source_files": [
+        "app/Http/Controllers/Auth/LoginController.php",
+        "app/Http/Controllers/Controller.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "cross-file semantic connection"
     }
   ],
-  "questions": [
-    {
-      "type": "bridge_node",
-      "question": "Why does `scripts` connect `scripts` to `composer.json`?",
-      "why": "High betweenness centrality (0.045) - this node is a cross-community bridge."
-    },
-    {
-      "type": "bridge_node",
-      "question": "Why does `User` connect `User` to `Illuminate\\Http\\Request`?",
-      "why": "High betweenness centrality (0.027) - this node is a cross-community bridge."
-    },
-    {
-      "type": "isolated_nodes",
-      "question": "What connects `description`, `dont-discover`, `license` to the rest of the system?",
-      "why": "76 weakly-connected nodes found - possible documentation gaps or missing edges."
-    },
-    {
-      "type": "low_cohesion",
-      "question": "Should `Illuminate\\Http\\Request` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.12643678160919541 - nodes in this community are weakly interconnected."
-    },
-    {
-      "type": "low_cohesion",
-      "question": "Should `composer.json` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected."
-    },
-    {
-      "type": "low_cohesion",
-      "question": "Should `scripts` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.08 - nodes in this community are weakly interconnected."
-    },
-    {
-      "type": "low_cohesion",
-      "question": "Should `User` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.12554112554112554 - nodes in this community are weakly interconnected."
-    }
-  ]
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
 }
