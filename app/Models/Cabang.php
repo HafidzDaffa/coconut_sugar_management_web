@@ -12,6 +12,8 @@ class Cabang extends Model
     protected $fillable = [
         'kode_cabang',
         'nama_cabang',
+        'no_badan_hukum',
+        'tanggal_berdiri',
         'alamat',
         'kota',
         'provinsi',
@@ -27,6 +29,7 @@ class Cabang extends Model
     ];
 
     protected $casts = [
+        'tanggal_berdiri' => 'date:Y-m-d',
         'latitude' => 'float',
         'longitude' => 'float',
         'kapasitas_harian_kg' => 'float',

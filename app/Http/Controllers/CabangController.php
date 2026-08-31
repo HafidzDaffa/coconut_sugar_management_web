@@ -18,6 +18,7 @@ class CabangController extends Controller
             ->when($search, function ($query, $search) {
                 $query->where('nama_cabang', 'like', "%{$search}%")
                       ->orWhere('kode_cabang', 'like', "%{$search}%")
+                      ->orWhere('no_badan_hukum', 'like', "%{$search}%")
                       ->orWhere('kota', 'like', "%{$search}%")
                       ->orWhere('penanggung_jawab', 'like', "%{$search}%");
             })
@@ -37,6 +38,8 @@ class CabangController extends Controller
         $validated = $request->validate([
             'kode_cabang'         => ['required', 'string', 'max:20', 'unique:cabangs,kode_cabang'],
             'nama_cabang'         => ['required', 'string', 'max:100'],
+            'no_badan_hukum'      => ['nullable', 'string', 'max:100'],
+            'tanggal_berdiri'     => ['nullable', 'date'],
             'alamat'              => ['required', 'string'],
             'kota'                => ['required', 'string', 'max:100'],
             'provinsi'            => ['nullable', 'string', 'max:100'],
@@ -61,6 +64,8 @@ class CabangController extends Controller
         $validated = $request->validate([
             'kode_cabang'         => ['required', 'string', 'max:20', 'unique:cabangs,kode_cabang,' . $cabang->id],
             'nama_cabang'         => ['required', 'string', 'max:100'],
+            'no_badan_hukum'      => ['nullable', 'string', 'max:100'],
+            'tanggal_berdiri'     => ['nullable', 'date'],
             'alamat'              => ['required', 'string'],
             'kota'                => ['required', 'string', 'max:100'],
             'provinsi'            => ['nullable', 'string', 'max:100'],

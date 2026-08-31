@@ -246,16 +246,16 @@
     "semantic_hash": "d6a41010fa8f94b57150f8c1e9dec692"
   },
   "app/Http/Controllers/CabangController.php": {
-    "mtime": 1788164291.909287,
-    "seen": 1788164430.9312105,
-    "ast_hash": "234d263b3b196d09ab8ea40e8899f041",
-    "semantic_hash": "234d263b3b196d09ab8ea40e8899f041"
+    "mtime": 1788164995.5822587,
+    "seen": 1788165099.216351,
+    "ast_hash": "38a577d5461f97bfeecaadd9ebb349dc",
+    "semantic_hash": "38a577d5461f97bfeecaadd9ebb349dc"
   },
   "app/Models/Cabang.php": {
-    "mtime": 1788163812.559423,
-    "seen": 1788164430.9315302,
-    "ast_hash": "6e94012f90635f9bcd72a79e433a3f07",
-    "semantic_hash": "6e94012f90635f9bcd72a79e433a3f07"
+    "mtime": 1788164981.9640894,
+    "seen": 1788165099.216822,
+    "ast_hash": "c2d41a8917ae573385329246e8723e83",
+    "semantic_hash": "c2d41a8917ae573385329246e8723e83"
   },
   "database/migrations/2026_08_31_000001_create_cabangs_table.php": {
     "mtime": 1788163807.3078525,
@@ -270,9 +270,15 @@
     "semantic_hash": "387d01e5ce5ee5f1404122379ff99987"
   },
   "resources/js/Pages/Cabang/Index.vue": {
-    "mtime": 1788164356.463575,
-    "seen": 1788164430.9367442,
-    "ast_hash": "72f1eee538ef98e3d037a1d98ada658b",
-    "semantic_hash": "72f1eee538ef98e3d037a1d98ada658b"
+    "mtime": 1788165025.0830195,
+    "seen": 1788165099.2235978,
+    "ast_hash": "789022a9aad23bf57c1876cab2794b8c",
+    "semantic_hash": "789022a9aad23bf57c1876cab2794b8c"
+  },
+  "database/migrations/2026_08_31_000002_add_legal_fields_to_cabangs_table.php": {
+    "mtime": 1788164953.67815,
+    "seen": 1788165099.222139,
+    "ast_hash": "172ea1f29d2ba759b7373ee3f1e272ae",
+    "semantic_hash": "172ea1f29d2ba759b7373ee3f1e272ae"
   }
 }

@@ -18,11 +18,12 @@
       "app_http_middleware_handleinertiarequests_handleinertiarequests",
       "app_http_middleware_handleinertiarequests_handleinertiarequests_share",
       "app_http_middleware_handleinertiarequests_handleinertiarequests_version",
-      "app_models_cabang",
       "app_models_cabang_cabang",
+      "bootstrap_app",
       "controller",
-      "illuminate_database_eloquent_factories_hasfactory",
-      "illuminate_database_eloquent_model",
+      "illuminate_foundation_application",
+      "illuminate_foundation_configuration_exceptions",
+      "illuminate_foundation_configuration_middleware",
       "illuminate_http_redirectresponse",
       "illuminate_http_request",
       "illuminate_support_facades_auth",
@@ -30,6 +31,7 @@
       "inertia_inertia",
       "inertia_middleware",
       "inertia_response",
+      "public_index",
       "routes_web"
     ],
     "1": [
@@ -51,11 +53,15 @@
       "composer_psr_4_database_factories",
       "composer_psr_4_database_seeders",
       "composer_psr_4_tests",
-      "composer_require",
-      "composer_require_inertiajs_inertia_laravel",
-      "composer_require_laravel_framework",
-      "composer_require_laravel_tinker",
-      "composer_require_php",
+      "composer_require_dev",
+      "composer_require_dev_fakerphp_faker",
+      "composer_require_dev_laravel_pail",
+      "composer_require_dev_laravel_pao",
+      "composer_require_dev_laravel_pint",
+      "composer_require_dev_laravel_sail",
+      "composer_require_dev_mockery_mockery",
+      "composer_require_dev_nunomaduro_collision",
+      "composer_require_dev_phpunit_phpunit",
       "composer_schema",
       "composer_type",
       "ref_framework",
@@ -90,6 +96,7 @@
       "ref_php_r_file_exists_env_copy_env_example_env"
     ],
     "3": [
+      "app_models_cabang",
       "app_models_user",
       "app_models_user_user",
       "app_models_user_user_casts",
@@ -107,6 +114,8 @@
       "illuminate_database_eloquent_attributes_fillable",
       "illuminate_database_eloquent_attributes_hidden",
       "illuminate_database_eloquent_factories_factory",
+      "illuminate_database_eloquent_factories_hasfactory",
+      "illuminate_database_eloquent_model",
       "illuminate_database_seeder",
       "illuminate_foundation_auth_user",
       "illuminate_notifications_notifiable",
@@ -114,6 +123,29 @@
       "static"
     ],
     "4": [
+      "database_migrations_0001_01_01_000000_create_users_table",
+      "database_migrations_0001_01_01_000000_create_users_table_down",
+      "database_migrations_0001_01_01_000000_create_users_table_up",
+      "database_migrations_0001_01_01_000001_create_cache_table",
+      "database_migrations_0001_01_01_000001_create_cache_table_down",
+      "database_migrations_0001_01_01_000001_create_cache_table_up",
+      "database_migrations_0001_01_01_000002_create_jobs_table",
+      "database_migrations_0001_01_01_000002_create_jobs_table_down",
+      "database_migrations_0001_01_01_000002_create_jobs_table_up",
+      "database_migrations_2026_08_31_000000_add_role_to_users_table",
+      "database_migrations_2026_08_31_000000_add_role_to_users_table_down",
+      "database_migrations_2026_08_31_000000_add_role_to_users_table_up",
+      "database_migrations_2026_08_31_000001_create_cabangs_table",
+      "database_migrations_2026_08_31_000001_create_cabangs_table_down",
+      "database_migrations_2026_08_31_000001_create_cabangs_table_up",
+      "database_migrations_2026_08_31_000002_add_legal_fields_to_cabangs_table",
+      "database_migrations_2026_08_31_000002_add_legal_fields_to_cabangs_table_down",
+      "database_migrations_2026_08_31_000002_add_legal_fields_to_cabangs_table_up",
+      "illuminate_database_migrations_migration",
+      "illuminate_database_schema_blueprint",
+      "illuminate_support_facades_schema"
+    ],
+    "5": [
       "axios",
       "inertiajs_vue3",
       "laravel_multiplex",
@@ -133,26 +165,6 @@
       "package_type",
       "vitejs_plugin_vue",
       "vue"
-    ],
-    "5": [
-      "database_migrations_0001_01_01_000000_create_users_table",
-      "database_migrations_0001_01_01_000000_create_users_table_down",
-      "database_migrations_0001_01_01_000000_create_users_table_up",
-      "database_migrations_0001_01_01_000001_create_cache_table",
-      "database_migrations_0001_01_01_000001_create_cache_table_down",
-      "database_migrations_0001_01_01_000001_create_cache_table_up",
-      "database_migrations_0001_01_01_000002_create_jobs_table",
-      "database_migrations_0001_01_01_000002_create_jobs_table_down",
-      "database_migrations_0001_01_01_000002_create_jobs_table_up",
-      "database_migrations_2026_08_31_000000_add_role_to_users_table",
-      "database_migrations_2026_08_31_000000_add_role_to_users_table_down",
-      "database_migrations_2026_08_31_000000_add_role_to_users_table_up",
-      "database_migrations_2026_08_31_000001_create_cabangs_table",
-      "database_migrations_2026_08_31_000001_create_cabangs_table_down",
-      "database_migrations_2026_08_31_000001_create_cabangs_table_up",
-      "illuminate_database_migrations_migration",
-      "illuminate_database_schema_blueprint",
-      "illuminate_support_facades_schema"
     ],
     "6": [
       "resources_js_pages_cabang_index",
@@ -188,17 +200,6 @@
       "vite"
     ],
     "8": [
-      "composer_require_dev",
-      "composer_require_dev_fakerphp_faker",
-      "composer_require_dev_laravel_pail",
-      "composer_require_dev_laravel_pao",
-      "composer_require_dev_laravel_pint",
-      "composer_require_dev_laravel_sail",
-      "composer_require_dev_mockery_mockery",
-      "composer_require_dev_nunomaduro_collision",
-      "composer_require_dev_phpunit_phpunit"
-    ],
-    "9": [
       "composer_allow_plugins_pestphp_pest_plugin",
       "composer_allow_plugins_php_http_discovery",
       "composer_config",
@@ -207,7 +208,7 @@
       "composer_config_preferred_install",
       "composer_config_sort_packages"
     ],
-    "10": [
+    "9": [
       "app_providers_appserviceprovider",
       "app_providers_appserviceprovider_appserviceprovider",
       "app_providers_appserviceprovider_appserviceprovider_boot",
@@ -215,7 +216,7 @@
       "bootstrap_providers",
       "illuminate_support_serviceprovider"
     ],
-    "11": [
+    "10": [
       "illuminate_foundation_testing_testcase",
       "tests_feature_exampletest",
       "tests_feature_exampletest_exampletest",
@@ -223,113 +224,113 @@
       "tests_testcase",
       "tests_testcase_testcase"
     ],
-    "12": [
-      "bootstrap_app",
-      "illuminate_foundation_application",
-      "illuminate_foundation_configuration_exceptions",
-      "illuminate_foundation_configuration_middleware",
-      "public_index"
+    "11": [
+      "composer_require",
+      "composer_require_inertiajs_inertia_laravel",
+      "composer_require_laravel_framework",
+      "composer_require_laravel_tinker",
+      "composer_require_php"
     ],
-    "13": [
+    "12": [
       "config_cache",
       "config_database",
       "config_session",
       "illuminate_support_str",
       "pdo_mysql"
     ],
-    "14": [
+    "13": [
       "config_logging",
       "monolog_handler_nullhandler",
       "monolog_handler_streamhandler",
       "monolog_handler_syslogudphandler",
       "monolog_processor_psrlogmessageprocessor"
     ],
-    "15": [
+    "14": [
       "resources_js_layouts_applayout",
       "resources_js_layouts_applayout_currenturl",
       "resources_js_layouts_applayout_logout",
       "resources_js_layouts_applayout_page",
       "resources_js_layouts_applayout_user"
     ],
-    "16": [
+    "15": [
       "phpunit_framework_testcase",
       "tests_unit_exampletest",
       "tests_unit_exampletest_exampletest",
       "tests_unit_exampletest_exampletest_test_that_true_is_true"
     ],
-    "17": [
+    "16": [
       "illuminate_foundation_inspiring",
       "illuminate_support_facades_artisan",
       "routes_console"
     ],
-    "18": [
+    "17": [
       "resources_js_app",
       "resources_js_app_setup",
       "resources_js_bootstrap"
     ],
-    "19": [
+    "18": [
       "resources_js_pages_auth_login",
       "resources_js_pages_auth_login_form",
       "resources_js_pages_auth_login_submit"
     ],
-    "20": [
+    "19": [
       "resources_js_pages_dashboard_index",
       "resources_js_pages_dashboard_index_page",
       "resources_js_pages_dashboard_index_user"
     ],
-    "21": [
+    "20": [
       "artisan"
     ],
-    "22": [
+    "21": [
       "config_app"
     ],
-    "23": [
+    "22": [
       "config_filesystems"
     ],
-    "24": [
+    "23": [
       "config_mail"
     ],
-    "25": [
+    "24": [
       "config_queue"
     ],
-    "26": [
+    "25": [
       "config_services"
     ],
-    "27": [
+    "26": [
       "resources_js_pages_home"
     ],
-    "28": [
+    "27": [
       "resources_views_app_blade"
     ],
-    "29": [
+    "28": [
       "resources_views_welcome_blade"
     ],
-    "30": [
+    "29": [
       "vite_config"
     ]
   },
   "cohesion": {
-    "0": 0.12643678160919541,
-    "1": 0.07407407407407407,
+    "0": 0.11290322580645161,
+    "1": 0.06451612903225806,
     "2": 0.08,
-    "3": 0.12554112554112554,
-    "4": 0.10526315789473684,
-    "5": 0.16339869281045752,
+    "3": 0.11,
+    "4": 0.14285714285714285,
+    "5": 0.10526315789473684,
     "6": 0.11764705882352941,
     "7": 0.18181818181818182,
-    "8": 0.2222222222222222,
-    "9": 0.2857142857142857,
+    "8": 0.2857142857142857,
+    "9": 0.4,
     "10": 0.4,
     "11": 0.4,
     "12": 0.4,
     "13": 0.4,
     "14": 0.4,
-    "15": 0.4,
+    "15": 0.6666666666666666,
     "16": 0.6666666666666666,
     "17": 0.6666666666666666,
     "18": 0.6666666666666666,
     "19": 0.6666666666666666,
-    "20": 0.6666666666666666,
+    "20": 1.0,
     "21": 1.0,
     "22": 1.0,
     "23": 1.0,
@@ -338,8 +339,7 @@
     "26": 1.0,
     "27": 1.0,
     "28": 1.0,
-    "29": 1.0,
-    "30": 1.0
+    "29": 1.0
   },
   "gods": [
     {
@@ -348,13 +348,13 @@
       "degree": 9
     },
     {
-      "id": "composer_scripts",
-      "label": "scripts",
+      "id": "composer_require_dev",
+      "label": "require-dev",
       "degree": 9
     },
     {
-      "id": "composer_require_dev",
-      "label": "require-dev",
+      "id": "composer_scripts",
+      "label": "scripts",
       "degree": 9
     },
     {
@@ -378,13 +378,13 @@
       "degree": 5
     },
     {
-      "id": "app_providers_appserviceprovider_appserviceprovider",
-      "label": "AppServiceProvider",
+      "id": "database_factories_userfactory_userfactory",
+      "label": "UserFactory",
       "degree": 5
     },
     {
-      "id": "database_factories_userfactory_userfactory",
-      "label": "UserFactory",
+      "id": "app_providers_appserviceprovider_appserviceprovider",
+      "label": "AppServiceProvider",
       "degree": 5
     },
     {
@@ -421,12 +421,12 @@
     {
       "type": "bridge_node",
       "question": "Why does `scripts` connect `scripts` to `composer.json`?",
-      "why": "High betweenness centrality (0.045) - this node is a cross-community bridge."
+      "why": "High betweenness centrality (0.044) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `User` connect `User` to `Illuminate\\Http\\Request`?",
-      "why": "High betweenness centrality (0.027) - this node is a cross-community bridge."
+      "question": "Why does `Cabang` connect `Illuminate\\Http\\Request` to `User`?",
+      "why": "High betweenness centrality (0.031) - this node is a cross-community bridge."
     },
     {
       "type": "isolated_nodes",
@@ -436,12 +436,12 @@
     {
       "type": "low_cohesion",
       "question": "Should `Illuminate\\Http\\Request` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.12643678160919541 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.11290322580645161 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
       "question": "Should `composer.json` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
@@ -451,7 +451,7 @@
     {
       "type": "low_cohesion",
       "question": "Should `User` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.12554112554112554 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.11 - nodes in this community are weakly interconnected."
     }
   ]
 }

@@ -24,6 +24,8 @@ const deletingCabang = ref(null);
 const form = useForm({
     kode_cabang: '',
     nama_cabang: '',
+    no_badan_hukum: '',
+    tanggal_berdiri: '',
     alamat: '',
     kota: '',
     provinsi: '',
@@ -57,6 +59,8 @@ const openEditModal = (cabang) => {
     form.clearErrors();
     form.kode_cabang = cabang.kode_cabang;
     form.nama_cabang = cabang.nama_cabang;
+    form.no_badan_hukum = cabang.no_badan_hukum || '';
+    form.tanggal_berdiri = cabang.tanggal_berdiri ? cabang.tanggal_berdiri.substring(0, 10) : '';
     form.alamat = cabang.alamat;
     form.kota = cabang.kota;
     form.provinsi = cabang.provinsi || '';
@@ -186,7 +190,15 @@ const openMapPreview = (lat, lng) => {
                         <tr v-for="cabang in cabangs" :key="cabang.id">
                             <td>
                                 <div class="font-bold text-slate-900">{{ cabang.nama_cabang }}</div>
-                                <span class="badge-code">{{ cabang.kode_cabang }}</span>
+                                <div class="flex items-center gap-1.5 mt-0.5">
+                                    <span class="badge-code">{{ cabang.kode_cabang }}</span>
+                                    <span v-if="cabang.no_badan_hukum" class="text-xs text-slate-500 font-mono">
+                                        ⚖️ {{ cabang.no_badan_hukum }}
+                                    </span>
+                                </div>
+                                <div v-if="cabang.tanggal_berdiri" class="text-[11px] text-slate-400 mt-0.5">
+                                    Berdiri: {{ new Date(cabang.tanggal_berdiri).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' }) }}
+                                </div>
                             </td>
                             <td>
                                 <div class="text-slate-800 font-medium">{{ cabang.kota }}</div>
@@ -275,6 +287,31 @@ const openMapPreview = (lat, lng) => {
                                 :class="{ 'is-invalid': form.errors.nama_cabang }"
                             />
                             <span v-if="form.errors.nama_cabang" class="error-msg">{{ form.errors.nama_cabang }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 1.5: No Badan Hukum & Tanggal Berdiri -->
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label>No. Badan Hukum</label>
+                            <input
+                                v-model="form.no_badan_hukum"
+                                type="text"
+                                placeholder="Contoh: AHU-0012345.AH.01.01.TAHUN 2024"
+                                class="form-control"
+                                :class="{ 'is-invalid': form.errors.no_badan_hukum }"
+                            />
+                            <span v-if="form.errors.no_badan_hukum" class="error-msg">{{ form.errors.no_badan_hukum }}</span>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>Tanggal Berdiri</label>
+                            <input
+                                v-model="form.tanggal_berdiri"
+                                type="date"
+                                class="form-control"
+                                :class="{ 'is-invalid': form.errors.tanggal_berdiri }"
+                            />
+                            <span v-if="form.errors.tanggal_berdiri" class="error-msg">{{ form.errors.tanggal_berdiri }}</span>
                         </div>
                     </div>
 
