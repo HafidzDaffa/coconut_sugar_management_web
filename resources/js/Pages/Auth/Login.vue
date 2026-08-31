@@ -15,7 +15,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Masuk" />
+    <Head title="Sign In" />
 
     <div class="auth-wrapper">
         <!-- Left Panel: Brand -->
@@ -32,12 +32,12 @@ const submit = () => {
                     </svg>
                 </div>
                 <h1 class="brand-title">Coconut Sugar<br>Management</h1>
-                <p class="brand-tagline">Sistem manajemen produksi & bisnis gula kelapa terpadu</p>
+                <p class="brand-tagline">Integrated coconut sugar production & operations platform</p>
 
                 <div class="brand-stats">
                     <div class="stat">
                         <span class="stat-number">100%</span>
-                        <span class="stat-label">Terintegrasi</span>
+                        <span class="stat-label">Integrated</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat">
@@ -46,8 +46,8 @@ const submit = () => {
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat">
-                        <span class="stat-number">Aman</span>
-                        <span class="stat-label">& Terproteksi</span>
+                        <span class="stat-number">Secure</span>
+                        <span class="stat-label">& Protected</span>
                     </div>
                 </div>
             </div>
@@ -62,14 +62,14 @@ const submit = () => {
         <div class="form-panel">
             <div class="form-container">
                 <div class="form-header">
-                    <h2 class="form-title">Selamat Datang</h2>
-                    <p class="form-subtitle">Masuk ke akun Anda untuk melanjutkan</p>
+                    <h2 class="form-title">Welcome Back</h2>
+                    <p class="form-subtitle">Please sign in to your account to continue</p>
                 </div>
 
                 <form @submit.prevent="submit" class="login-form">
                     <!-- Email -->
                     <div class="field-group">
-                        <label for="email" class="field-label">Alamat Email</label>
+                        <label for="email" class="field-label">Email Address</label>
                         <div class="field-wrapper" :class="{ 'field-wrapper--error': form.errors.email }">
                             <svg class="field-icon" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
@@ -111,7 +111,7 @@ const submit = () => {
                     <div class="remember-row">
                         <label class="remember-label">
                             <input v-model="form.remember" type="checkbox" class="remember-checkbox" />
-                            <span>Ingat saya</span>
+                            <span>Remember me</span>
                         </label>
                     </div>
 
@@ -125,7 +125,7 @@ const submit = () => {
                         <svg v-if="form.processing" class="spin" viewBox="0 0 24 24" fill="none">
                             <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30" stroke-dashoffset="10"/>
                         </svg>
-                        <span>{{ form.processing ? 'Memproses...' : 'Masuk ke Dashboard' }}</span>
+                        <span>{{ form.processing ? 'Signing in...' : 'Sign in to Dashboard' }}</span>
                         <svg v-if="!form.processing" viewBox="0 0 20 20" fill="currentColor" class="btn-arrow">
                             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         </svg>
@@ -133,7 +133,7 @@ const submit = () => {
                 </form>
 
                 <p class="form-footer">
-                    Sistem Manajemen Gula Kelapa &copy; {{ new Date().getFullYear() }}
+                    Coconut Sugar Management System &copy; {{ new Date().getFullYear() }}
                 </p>
             </div>
         </div>

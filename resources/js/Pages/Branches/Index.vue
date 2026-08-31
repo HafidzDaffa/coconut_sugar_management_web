@@ -1,10 +1,10 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useForm, router } from '@inertiajs/vue3';
 
 const props = defineProps({
-    cabangs: {
+    branches: {
         type: Array,
         default: () => [],
     },
@@ -19,29 +19,29 @@ const showModal = ref(false);
 const isEditing = ref(false);
 const editingId = ref(null);
 const showDeleteModal = ref(false);
-const deletingCabang = ref(null);
+const deletingBranch = ref(null);
 
 const form = useForm({
-    kode_cabang: '',
-    nama_cabang: '',
-    no_badan_hukum: '',
-    tanggal_berdiri: '',
-    alamat: '',
-    kota: '',
-    provinsi: '',
-    kode_pos: '',
+    branch_code: '',
+    name: '',
+    legal_entity_number: '',
+    established_date: '',
+    address: '',
+    city: '',
+    province: '',
+    postal_code: '',
     latitude: '',
     longitude: '',
-    penanggung_jawab: '',
-    telepon: '',
+    person_in_charge: '',
+    phone: '',
     email: '',
-    status: 'aktif',
-    kapasitas_harian_kg: 0,
-    keterangan: '',
+    status: 'active',
+    daily_capacity_kg: 0,
+    notes: '',
 });
 
 const handleSearch = () => {
-    router.get('/cabang', { search: searchQuery.value }, { preserveState: true, replace: true });
+    router.get('/branches', { search: searchQuery.value }, { preserveState: true, replace: true });
 };
 
 const openCreateModal = () => {
@@ -49,30 +49,30 @@ const openCreateModal = () => {
     editingId.value = null;
     form.reset();
     form.clearErrors();
-    form.status = 'aktif';
+    form.status = 'active';
     showModal.value = true;
 };
 
-const openEditModal = (cabang) => {
+const openEditModal = (branch) => {
     isEditing.value = true;
-    editingId.value = cabang.id;
+    editingId.value = branch.id;
     form.clearErrors();
-    form.kode_cabang = cabang.kode_cabang;
-    form.nama_cabang = cabang.nama_cabang;
-    form.no_badan_hukum = cabang.no_badan_hukum || '';
-    form.tanggal_berdiri = cabang.tanggal_berdiri ? cabang.tanggal_berdiri.substring(0, 10) : '';
-    form.alamat = cabang.alamat;
-    form.kota = cabang.kota;
-    form.provinsi = cabang.provinsi || '';
-    form.kode_pos = cabang.kode_pos || '';
-    form.latitude = cabang.latitude !== null ? String(cabang.latitude) : '';
-    form.longitude = cabang.longitude !== null ? String(cabang.longitude) : '';
-    form.penanggung_jawab = cabang.penanggung_jawab;
-    form.telepon = cabang.telepon;
-    form.email = cabang.email || '';
-    form.status = cabang.status || 'aktif';
-    form.kapasitas_harian_kg = cabang.kapasitas_harian_kg || 0;
-    form.keterangan = cabang.keterangan || '';
+    form.branch_code = branch.branch_code;
+    form.name = branch.name;
+    form.legal_entity_number = branch.legal_entity_number || '';
+    form.established_date = branch.established_date ? branch.established_date.substring(0, 10) : '';
+    form.address = branch.address;
+    form.city = branch.city;
+    form.province = branch.province || '';
+    form.postal_code = branch.postal_code || '';
+    form.latitude = branch.latitude !== null ? String(branch.latitude) : '';
+    form.longitude = branch.longitude !== null ? String(branch.longitude) : '';
+    form.person_in_charge = branch.person_in_charge;
+    form.phone = branch.phone;
+    form.email = branch.email || '';
+    form.status = branch.status || 'active';
+    form.daily_capacity_kg = branch.daily_capacity_kg || 0;
+    form.notes = branch.notes || '';
     showModal.value = true;
 };
 
@@ -82,29 +82,29 @@ const closeModal = () => {
     form.clearErrors();
 };
 
-const saveCabang = () => {
+const saveBranch = () => {
     if (isEditing.value) {
-        form.put(`/cabang/${editingId.value}`, {
+        form.put(`/branches/${editingId.value}`, {
             onSuccess: () => closeModal(),
         });
     } else {
-        form.post('/cabang', {
+        form.post('/branches', {
             onSuccess: () => closeModal(),
         });
     }
 };
 
-const confirmDelete = (cabang) => {
-    deletingCabang.value = cabang;
+const confirmDelete = (branch) => {
+    deletingBranch.value = branch;
     showDeleteModal.value = true;
 };
 
 const executeDelete = () => {
-    if (!deletingCabang.value) return;
-    router.delete(`/cabang/${deletingCabang.value.id}`, {
+    if (!deletingBranch.value) return;
+    router.delete(`/branches/${deletingBranch.value.id}`, {
         onSuccess: () => {
             showDeleteModal.value = false;
-            deletingCabang.value = null;
+            deletingBranch.value = null;
         },
     });
 };
@@ -117,11 +117,11 @@ const getCurrentLocation = () => {
                 form.longitude = position.coords.longitude.toFixed(6);
             },
             (error) => {
-                alert('Gagal mengambil lokasi: ' + error.message);
+                alert('Failed to retrieve location: ' + error.message);
             }
         );
     } else {
-        alert('Browser tidak mendukung geolokasi');
+        alert('Geolocation is not supported by your browser');
     }
 };
 
@@ -133,7 +133,7 @@ const openMapPreview = (lat, lng) => {
 </script>
 
 <template>
-    <AppLayout title="Data Cabang">
+    <AppLayout title="Branch Management">
         <!-- Actions & Filter Bar -->
         <div class="content-header">
             <div class="search-box">
@@ -144,7 +144,7 @@ const openMapPreview = (lat, lng) => {
                     v-model="searchQuery"
                     @keyup.enter="handleSearch"
                     type="text"
-                    placeholder="Cari kode, nama cabang, kota..."
+                    placeholder="Search by code, branch name, city..."
                     class="search-input"
                 />
                 <button v-if="searchQuery" @click="searchQuery = ''; handleSearch()" class="search-clear">✕</button>
@@ -154,22 +154,22 @@ const openMapPreview = (lat, lng) => {
                 <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
                     <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                 </svg>
-                Tambah Cabang
+                Add Branch
             </button>
         </div>
 
         <!-- Table Card -->
         <div class="table-card">
-            <div v-if="cabangs.length === 0" class="empty-state">
+            <div v-if="branches.length === 0" class="empty-state">
                 <div class="empty-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
                 </div>
-                <h3>Belum ada data cabang</h3>
-                <p>Mulai dengan menambahkan cabang atau sentra pengolahan gula kelapa pertama Anda.</p>
+                <h3>No branches found</h3>
+                <p>Get started by adding your first coconut sugar branch or processing facility.</p>
                 <button @click="openCreateModal" class="btn-primary mt-3">
-                    + Tambah Cabang Sekarang
+                    + Add Branch Now
                 </button>
             </div>
 
@@ -177,72 +177,72 @@ const openMapPreview = (lat, lng) => {
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Kode & Nama Cabang</th>
-                            <th>Kota & Alamat</th>
-                            <th>Penanggung Jawab</th>
-                            <th>Kontak</th>
-                            <th>Koordinat GPS</th>
+                            <th>Branch Code & Name</th>
+                            <th>City & Address</th>
+                            <th>Person in Charge</th>
+                            <th>Contact</th>
+                            <th>GPS Coordinates</th>
                             <th>Status</th>
-                            <th class="text-right">Aksi</th>
+                            <th class="text-right">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="cabang in cabangs" :key="cabang.id">
+                        <tr v-for="branch in branches" :key="branch.id">
                             <td>
-                                <div class="font-bold text-slate-900">{{ cabang.nama_cabang }}</div>
+                                <div class="font-bold text-slate-900">{{ branch.name }}</div>
                                 <div class="flex items-center gap-1.5 mt-0.5">
-                                    <span class="badge-code">{{ cabang.kode_cabang }}</span>
-                                    <span v-if="cabang.no_badan_hukum" class="text-xs text-slate-500 font-mono">
-                                        ⚖️ {{ cabang.no_badan_hukum }}
+                                    <span class="badge-code">{{ branch.branch_code }}</span>
+                                    <span v-if="branch.legal_entity_number" class="text-xs text-slate-500 font-mono">
+                                        ⚖️ {{ branch.legal_entity_number }}
                                     </span>
                                 </div>
-                                <div v-if="cabang.tanggal_berdiri" class="text-[11px] text-slate-400 mt-0.5">
-                                    Berdiri: {{ new Date(cabang.tanggal_berdiri).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' }) }}
+                                <div v-if="branch.established_date" class="text-[11px] text-slate-400 mt-0.5">
+                                    Est: {{ new Date(branch.established_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}
                                 </div>
                             </td>
                             <td>
-                                <div class="text-slate-800 font-medium">{{ cabang.kota }}</div>
-                                <div class="text-xs text-slate-500 truncate max-w-xs">{{ cabang.alamat }}</div>
+                                <div class="text-slate-800 font-medium">{{ branch.city }}</div>
+                                <div class="text-xs text-slate-500 truncate max-w-xs">{{ branch.address }}</div>
                             </td>
                             <td>
-                                <div class="text-slate-900 font-medium">{{ cabang.penanggung_jawab }}</div>
-                                <div class="text-xs text-slate-500">Kapasitas: {{ Number(cabang.kapasitas_harian_kg).toLocaleString() }} kg/hari</div>
+                                <div class="text-slate-900 font-medium">{{ branch.person_in_charge }}</div>
+                                <div class="text-xs text-slate-500">Capacity: {{ Number(branch.daily_capacity_kg).toLocaleString() }} kg/day</div>
                             </td>
                             <td>
-                                <div class="text-slate-800 text-sm">{{ cabang.telepon }}</div>
-                                <div v-if="cabang.email" class="text-xs text-slate-500">{{ cabang.email }}</div>
+                                <div class="text-slate-800 text-sm">{{ branch.phone }}</div>
+                                <div v-if="branch.email" class="text-xs text-slate-500">{{ branch.email }}</div>
                             </td>
                             <td>
-                                <div v-if="cabang.latitude && cabang.longitude">
+                                <div v-if="branch.latitude && branch.longitude">
                                     <button
-                                        @click="openMapPreview(cabang.latitude, cabang.longitude)"
+                                        @click="openMapPreview(branch.latitude, branch.longitude)"
                                         class="btn-coords"
-                                        title="Buka di Google Maps"
+                                        title="Open in Google Maps"
                                     >
                                         <svg viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5 mr-1 text-blue-600">
                                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                                         </svg>
-                                        {{ cabang.latitude }}, {{ cabang.longitude }}
+                                        {{ branch.latitude }}, {{ branch.longitude }}
                                     </button>
                                 </div>
-                                <span v-else class="text-xs text-slate-400 italic">- Belum diset -</span>
+                                <span v-else class="text-xs text-slate-400 italic">- Not configured -</span>
                             </td>
                             <td>
                                 <span
                                     class="status-badge"
-                                    :class="cabang.status === 'aktif' ? 'status-badge--active' : 'status-badge--inactive'"
+                                    :class="branch.status === 'active' ? 'status-badge--active' : 'status-badge--inactive'"
                                 >
-                                    {{ cabang.status === 'aktif' ? 'Aktif' : 'Nonaktif' }}
+                                    {{ branch.status === 'active' ? 'Active' : 'Inactive' }}
                                 </span>
                             </td>
                             <td class="text-right">
                                 <div class="action-buttons">
-                                    <button @click="openEditModal(cabang)" class="btn-action btn-action--edit" title="Edit">
+                                    <button @click="openEditModal(branch)" class="btn-action btn-action--edit" title="Edit">
                                         <svg viewBox="0 0 20 20" fill="currentColor">
                                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                                         </svg>
                                     </button>
-                                    <button @click="confirmDelete(cabang)" class="btn-action btn-action--delete" title="Hapus">
+                                    <button @click="confirmDelete(branch)" class="btn-action btn-action--delete" title="Delete">
                                         <svg viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                         </svg>
@@ -255,105 +255,105 @@ const openMapPreview = (lat, lng) => {
             </div>
         </div>
 
-        <!-- Modal Tambah / Edit Cabang -->
+        <!-- Modal Create / Edit Branch -->
         <div v-if="showModal" class="modal-backdrop" @click.self="closeModal">
             <div class="modal-card">
                 <div class="modal-header">
-                    <h3>{{ isEditing ? 'Edit Data Cabang' : 'Tambah Cabang Baru' }}</h3>
+                    <h3>{{ isEditing ? 'Edit Branch' : 'Add New Branch' }}</h3>
                     <button @click="closeModal" class="btn-close">✕</button>
                 </div>
 
-                <form @submit.prevent="saveCabang" class="modal-body">
-                    <!-- Row 1: Kode & Nama Cabang -->
+                <form @submit.prevent="saveBranch" class="modal-body">
+                    <!-- Row 1: Code & Name -->
                     <div class="form-row">
                         <div class="form-group flex-1">
-                            <label>Kode Cabang <span class="required">*</span></label>
+                            <label>Branch Code <span class="required">*</span></label>
                             <input
-                                v-model="form.kode_cabang"
+                                v-model="form.branch_code"
                                 type="text"
-                                placeholder="Contoh: CBG-01"
+                                placeholder="e.g. BR-01"
                                 class="form-control"
-                                :class="{ 'is-invalid': form.errors.kode_cabang }"
+                                :class="{ 'is-invalid': form.errors.branch_code }"
                             />
-                            <span v-if="form.errors.kode_cabang" class="error-msg">{{ form.errors.kode_cabang }}</span>
+                            <span v-if="form.errors.branch_code" class="error-msg">{{ form.errors.branch_code }}</span>
                         </div>
                         <div class="form-group flex-2">
-                            <label>Nama Cabang <span class="required">*</span></label>
+                            <label>Branch Name <span class="required">*</span></label>
                             <input
-                                v-model="form.nama_cabang"
+                                v-model="form.name"
                                 type="text"
-                                placeholder="Contoh: Sentra Banyumas Timur"
+                                placeholder="e.g. East Banyumas Central"
                                 class="form-control"
-                                :class="{ 'is-invalid': form.errors.nama_cabang }"
+                                :class="{ 'is-invalid': form.errors.name }"
                             />
-                            <span v-if="form.errors.nama_cabang" class="error-msg">{{ form.errors.nama_cabang }}</span>
+                            <span v-if="form.errors.name" class="error-msg">{{ form.errors.name }}</span>
                         </div>
                     </div>
 
-                    <!-- Row 1.5: No Badan Hukum & Tanggal Berdiri -->
+                    <!-- Row 2: Legal Entity Number & Established Date -->
                     <div class="form-row">
                         <div class="form-group flex-1">
-                            <label>No. Badan Hukum</label>
+                            <label>Legal Entity Number</label>
                             <input
-                                v-model="form.no_badan_hukum"
+                                v-model="form.legal_entity_number"
                                 type="text"
-                                placeholder="Contoh: AHU-0012345.AH.01.01.TAHUN 2024"
+                                placeholder="e.g. AHU-0012345.AH.01.01.YEAR 2024"
                                 class="form-control"
-                                :class="{ 'is-invalid': form.errors.no_badan_hukum }"
+                                :class="{ 'is-invalid': form.errors.legal_entity_number }"
                             />
-                            <span v-if="form.errors.no_badan_hukum" class="error-msg">{{ form.errors.no_badan_hukum }}</span>
+                            <span v-if="form.errors.legal_entity_number" class="error-msg">{{ form.errors.legal_entity_number }}</span>
                         </div>
                         <div class="form-group flex-1">
-                            <label>Tanggal Berdiri</label>
+                            <label>Established Date</label>
                             <input
-                                v-model="form.tanggal_berdiri"
+                                v-model="form.established_date"
                                 type="date"
                                 class="form-control"
-                                :class="{ 'is-invalid': form.errors.tanggal_berdiri }"
+                                :class="{ 'is-invalid': form.errors.established_date }"
                             />
-                            <span v-if="form.errors.tanggal_berdiri" class="error-msg">{{ form.errors.tanggal_berdiri }}</span>
+                            <span v-if="form.errors.established_date" class="error-msg">{{ form.errors.established_date }}</span>
                         </div>
                     </div>
 
-                    <!-- Row 2: Alamat Lengkap -->
+                    <!-- Row 3: Address -->
                     <div class="form-group">
-                        <label>Alamat Lengkap <span class="required">*</span></label>
+                        <label>Full Address <span class="required">*</span></label>
                         <textarea
-                            v-model="form.alamat"
+                            v-model="form.address"
                             rows="2"
-                            placeholder="Jl. Kelapa Manis No. 12, Desa Karangsari"
+                            placeholder="e.g. 12 Sugar Palm Way, Karangsari Village"
                             class="form-control"
-                            :class="{ 'is-invalid': form.errors.alamat }"
+                            :class="{ 'is-invalid': form.errors.address }"
                         ></textarea>
-                        <span v-if="form.errors.alamat" class="error-msg">{{ form.errors.alamat }}</span>
+                        <span v-if="form.errors.address" class="error-msg">{{ form.errors.address }}</span>
                     </div>
 
-                    <!-- Row 3: Kota, Provinsi, Kode Pos -->
+                    <!-- Row 4: City, Province, Postal Code -->
                     <div class="form-row">
                         <div class="form-group flex-1">
-                            <label>Kota / Kabupaten <span class="required">*</span></label>
+                            <label>City / Regency <span class="required">*</span></label>
                             <input
-                                v-model="form.kota"
+                                v-model="form.city"
                                 type="text"
                                 placeholder="Banyumas"
                                 class="form-control"
-                                :class="{ 'is-invalid': form.errors.kota }"
+                                :class="{ 'is-invalid': form.errors.city }"
                             />
-                            <span v-if="form.errors.kota" class="error-msg">{{ form.errors.kota }}</span>
+                            <span v-if="form.errors.city" class="error-msg">{{ form.errors.city }}</span>
                         </div>
                         <div class="form-group flex-1">
-                            <label>Provinsi</label>
+                            <label>Province</label>
                             <input
-                                v-model="form.provinsi"
+                                v-model="form.province"
                                 type="text"
-                                placeholder="Jawa Tengah"
+                                placeholder="Central Java"
                                 class="form-control"
                             />
                         </div>
                         <div class="form-group flex-1">
-                            <label>Kode Pos</label>
+                            <label>Postal Code</label>
                             <input
-                                v-model="form.kode_pos"
+                                v-model="form.postal_code"
                                 type="text"
                                 placeholder="53123"
                                 class="form-control"
@@ -361,16 +361,16 @@ const openMapPreview = (lat, lng) => {
                         </div>
                     </div>
 
-                    <!-- Row 4: Latitude & Longitude with Helpers -->
+                    <!-- Row 5: GPS Coordinates -->
                     <div class="form-group">
                         <div class="flex justify-between items-center mb-1">
-                            <label class="mb-0">Koordinat GPS Cabang</label>
+                            <label class="mb-0">GPS Coordinates</label>
                             <button
                                 type="button"
                                 @click="getCurrentLocation"
                                 class="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 cursor-pointer"
                             >
-                                📍 Ambil Lokasi Saya
+                                📍 Use Current Location
                             </button>
                         </div>
                         <div class="form-row">
@@ -378,7 +378,7 @@ const openMapPreview = (lat, lng) => {
                                 <input
                                     v-model="form.latitude"
                                     type="text"
-                                    placeholder="Latitude (cth: -7.431391)"
+                                    placeholder="Latitude (e.g. -7.431391)"
                                     class="form-control"
                                     :class="{ 'is-invalid': form.errors.latitude }"
                                 />
@@ -388,7 +388,7 @@ const openMapPreview = (lat, lng) => {
                                 <input
                                     v-model="form.longitude"
                                     type="text"
-                                    placeholder="Longitude (cth: 109.247833)"
+                                    placeholder="Longitude (e.g. 109.247833)"
                                     class="form-control"
                                     :class="{ 'is-invalid': form.errors.longitude }"
                                 />
@@ -397,36 +397,36 @@ const openMapPreview = (lat, lng) => {
                         </div>
                     </div>
 
-                    <!-- Row 5: PIC & Kontak -->
+                    <!-- Row 6: PIC & Contacts -->
                     <div class="form-row">
                         <div class="form-group flex-1">
-                            <label>Penanggung Jawab (PIC) <span class="required">*</span></label>
+                            <label>Person in Charge (PIC) <span class="required">*</span></label>
                             <input
-                                v-model="form.penanggung_jawab"
+                                v-model="form.person_in_charge"
                                 type="text"
-                                placeholder="Nama kepala cabang"
+                                placeholder="Branch Manager Name"
                                 class="form-control"
-                                :class="{ 'is-invalid': form.errors.penanggung_jawab }"
+                                :class="{ 'is-invalid': form.errors.person_in_charge }"
                             />
-                            <span v-if="form.errors.penanggung_jawab" class="error-msg">{{ form.errors.penanggung_jawab }}</span>
+                            <span v-if="form.errors.person_in_charge" class="error-msg">{{ form.errors.person_in_charge }}</span>
                         </div>
                         <div class="form-group flex-1">
-                            <label>Nomor Telepon / WA <span class="required">*</span></label>
+                            <label>Phone / WhatsApp <span class="required">*</span></label>
                             <input
-                                v-model="form.telepon"
+                                v-model="form.phone"
                                 type="text"
-                                placeholder="08123456789"
+                                placeholder="+62 812 3456 789"
                                 class="form-control"
-                                :class="{ 'is-invalid': form.errors.telepon }"
+                                :class="{ 'is-invalid': form.errors.phone }"
                             />
-                            <span v-if="form.errors.telepon" class="error-msg">{{ form.errors.telepon }}</span>
+                            <span v-if="form.errors.phone" class="error-msg">{{ form.errors.phone }}</span>
                         </div>
                         <div class="form-group flex-1">
-                            <label>Email Cabang</label>
+                            <label>Branch Email</label>
                             <input
                                 v-model="form.email"
                                 type="email"
-                                placeholder="cabang@coconutsugar.com"
+                                placeholder="branch@coconutsugar.com"
                                 class="form-control"
                                 :class="{ 'is-invalid': form.errors.email }"
                             />
@@ -434,12 +434,12 @@ const openMapPreview = (lat, lng) => {
                         </div>
                     </div>
 
-                    <!-- Row 6: Kapasitas Harian & Status -->
+                    <!-- Row 7: Capacity & Status -->
                     <div class="form-row">
                         <div class="form-group flex-1">
-                            <label>Kapasitas Harian (Kg)</label>
+                            <label>Daily Capacity (Kg)</label>
                             <input
-                                v-model="form.kapasitas_harian_kg"
+                                v-model="form.daily_capacity_kg"
                                 type="number"
                                 step="0.1"
                                 placeholder="0"
@@ -447,21 +447,21 @@ const openMapPreview = (lat, lng) => {
                             />
                         </div>
                         <div class="form-group flex-1">
-                            <label>Status Cabang <span class="required">*</span></label>
+                            <label>Status <span class="required">*</span></label>
                             <select v-model="form.status" class="form-control">
-                                <option value="aktif">Aktif</option>
-                                <option value="nonaktif">Nonaktif</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Row 7: Keterangan -->
+                    <!-- Row 8: Notes -->
                     <div class="form-group">
-                        <label>Keterangan Tambahan</label>
+                        <label>Additional Notes</label>
                         <textarea
-                            v-model="form.keterangan"
+                            v-model="form.notes"
                             rows="2"
-                            placeholder="Catatan fasilitas cabang, kapasitas penampungan, dll."
+                            placeholder="Facility specifications, collection capacity, equipment details, etc."
                             class="form-control"
                         ></textarea>
                     </div>
@@ -469,37 +469,37 @@ const openMapPreview = (lat, lng) => {
                     <!-- Modal Actions -->
                     <div class="modal-footer">
                         <button type="button" @click="closeModal" class="btn-secondary">
-                            Batal
+                            Cancel
                         </button>
                         <button
                             type="submit"
                             class="btn-primary"
                             :disabled="form.processing"
                         >
-                            {{ form.processing ? 'Menyimpan...' : (isEditing ? 'Perbarui Cabang' : 'Simpan Cabang') }}
+                            {{ form.processing ? 'Saving...' : (isEditing ? 'Update Branch' : 'Save Branch') }}
                         </button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- Modal Konfirmasi Hapus -->
+        <!-- Delete Confirmation Modal -->
         <div v-if="showDeleteModal" class="modal-backdrop" @click.self="showDeleteModal = false">
             <div class="modal-card modal-card--sm">
                 <div class="modal-header">
-                    <h3 class="text-rose-600">Konfirmasi Hapus</h3>
+                    <h3 class="text-rose-600">Confirm Deletion</h3>
                     <button @click="showDeleteModal = false" class="btn-close">✕</button>
                 </div>
                 <div class="modal-body">
                     <p class="text-slate-700 text-sm">
-                        Apakah Anda yakin ingin menghapus cabang <strong>{{ deletingCabang?.nama_cabang }}</strong> ({{ deletingCabang?.kode_cabang }})?
+                        Are you sure you want to delete branch <strong>{{ deletingBranch?.name }}</strong> ({{ deletingBranch?.branch_code }})?
                     </p>
                     <div class="modal-footer mt-4">
                         <button type="button" @click="showDeleteModal = false" class="btn-secondary">
-                            Batal
+                            Cancel
                         </button>
                         <button type="button" @click="executeDelete" class="btn-danger">
-                            Hapus Sekarang
+                            Delete Now
                         </button>
                     </div>
                 </div>
@@ -659,7 +659,6 @@ const openMapPreview = (lat, lng) => {
     font-weight: 600;
     padding: 0.15rem 0.5rem;
     border-radius: 6px;
-    margin-top: 0.2rem;
 }
 
 .btn-coords {

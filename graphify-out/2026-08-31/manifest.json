@@ -1,9 +1,9 @@
 {
   "app/Http/Controllers/Auth/LoginController.php": {
-    "mtime": 1788146542.261565,
-    "seen": 1788164430.9312043,
-    "ast_hash": "06d2080d55478a2f2a0f04643efbdc04",
-    "semantic_hash": "06d2080d55478a2f2a0f04643efbdc04"
+    "mtime": 1788165664.186202,
+    "seen": 1788166020.8701742,
+    "ast_hash": "542a2295e895db7c01b36899436cd1ac",
+    "semantic_hash": "542a2295e895db7c01b36899436cd1ac"
   },
   "app/Http/Controllers/Controller.php": {
     "mtime": 1787675219.0,
@@ -168,16 +168,16 @@
     "semantic_hash": "d8eda274115af5fd2aaa8230af329ef7"
   },
   "resources/js/Pages/Auth/Login.vue": {
-    "mtime": 1788146542.3343382,
-    "seen": 1788164430.9367423,
-    "ast_hash": "67d4b50bbef9ce85d98725dca783ae16",
-    "semantic_hash": "67d4b50bbef9ce85d98725dca783ae16"
+    "mtime": 1788165674.0431042,
+    "seen": 1788166020.8754647,
+    "ast_hash": "6cc23db078770cea44ffa48c88c17c38",
+    "semantic_hash": "6cc23db078770cea44ffa48c88c17c38"
   },
   "resources/js/Pages/Dashboard/Index.vue": {
-    "mtime": 1788164336.4214907,
-    "seen": 1788164430.9367464,
-    "ast_hash": "e49e0d4ab80ec7b9e38e1ecb55eee348",
-    "semantic_hash": "e49e0d4ab80ec7b9e38e1ecb55eee348"
+    "mtime": 1788165694.5882428,
+    "seen": 1788166020.8754687,
+    "ast_hash": "36deafbf88ce6022f369981f36fec373",
+    "semantic_hash": "36deafbf88ce6022f369981f36fec373"
   },
   "resources/js/Pages/Home.vue": {
     "mtime": 1788143375.1369464,
@@ -216,10 +216,10 @@
     "semantic_hash": "3c6ce2e6d16444282b24a9aa63885563"
   },
   "routes/web.php": {
-    "mtime": 1788164299.934028,
-    "seen": 1788164430.937661,
-    "ast_hash": "e073e78dac8bdcc2c1b57cede960a213",
-    "semantic_hash": "e073e78dac8bdcc2c1b57cede960a213"
+    "mtime": 1788165503.0123546,
+    "seen": 1788166020.8765566,
+    "ast_hash": "fde2d65e296dbc00deff71524d0b8ab4",
+    "semantic_hash": "fde2d65e296dbc00deff71524d0b8ab4"
   },
   "tests/Feature/ExampleTest.php": {
     "mtime": 1787675219.0,
@@ -245,40 +245,34 @@
     "ast_hash": "d6a41010fa8f94b57150f8c1e9dec692",
     "semantic_hash": "d6a41010fa8f94b57150f8c1e9dec692"
   },
-  "app/Http/Controllers/CabangController.php": {
-    "mtime": 1788164995.5822587,
-    "seen": 1788165099.216351,
-    "ast_hash": "38a577d5461f97bfeecaadd9ebb349dc",
-    "semantic_hash": "38a577d5461f97bfeecaadd9ebb349dc"
-  },
-  "app/Models/Cabang.php": {
-    "mtime": 1788164981.9640894,
-    "seen": 1788165099.216822,
-    "ast_hash": "c2d41a8917ae573385329246e8723e83",
-    "semantic_hash": "c2d41a8917ae573385329246e8723e83"
-  },
-  "database/migrations/2026_08_31_000001_create_cabangs_table.php": {
-    "mtime": 1788163807.3078525,
-    "seen": 1788164430.9363525,
-    "ast_hash": "5cf15f0878f21cabdaaa40e3b9870c63",
-    "semantic_hash": "5cf15f0878f21cabdaaa40e3b9870c63"
-  },
   "resources/js/Layouts/AppLayout.vue": {
-    "mtime": 1788164314.325458,
-    "seen": 1788164430.9367402,
-    "ast_hash": "387d01e5ce5ee5f1404122379ff99987",
-    "semantic_hash": "387d01e5ce5ee5f1404122379ff99987"
+    "mtime": 1788165683.476873,
+    "seen": 1788166020.8754623,
+    "ast_hash": "713ede4d872af6b780206c0bc1b99db5",
+    "semantic_hash": "713ede4d872af6b780206c0bc1b99db5"
   },
-  "resources/js/Pages/Cabang/Index.vue": {
-    "mtime": 1788165025.0830195,
-    "seen": 1788165099.2235978,
-    "ast_hash": "789022a9aad23bf57c1876cab2794b8c",
-    "semantic_hash": "789022a9aad23bf57c1876cab2794b8c"
+  "app/Http/Controllers/BranchController.php": {
+    "mtime": 1788165498.0894432,
+    "seen": 1788166020.8701828,
+    "ast_hash": "6fc84c16887d3cc13b8f6d38cc1c03fe",
+    "semantic_hash": "6fc84c16887d3cc13b8f6d38cc1c03fe"
   },
-  "database/migrations/2026_08_31_000002_add_legal_fields_to_cabangs_table.php": {
-    "mtime": 1788164953.67815,
-    "seen": 1788165099.222139,
-    "ast_hash": "172ea1f29d2ba759b7373ee3f1e272ae",
-    "semantic_hash": "172ea1f29d2ba759b7373ee3f1e272ae"
+  "app/Models/Branch.php": {
+    "mtime": 1788165492.2817416,
+    "seen": 1788166020.870787,
+    "ast_hash": "5155c110605b5d56cab447a65f5d0f52",
+    "semantic_hash": "5155c110605b5d56cab447a65f5d0f52"
+  },
+  "database/migrations/2026_08_31_000001_create_branches_table.php": {
+    "mtime": 1788165474.0924828,
+    "seen": 1788166020.8746886,
+    "ast_hash": "a9184cd82afbd8f98bf08f868b3b3d16",
+    "semantic_hash": "a9184cd82afbd8f98bf08f868b3b3d16"
+  },
+  "resources/js/Pages/Branches/Index.vue": {
+    "mtime": 1788165710.8562005,
+    "seen": 1788166020.8754666,
+    "ast_hash": "b669bdf9ae941d92f6f7d30e461cd59a",
+    "semantic_hash": "b669bdf9ae941d92f6f7d30e461cd59a"
   }
 }
