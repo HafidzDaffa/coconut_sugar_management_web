@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::resource('branches', \App\Http\Controllers\BranchController::class);
+    Route::resource('users', \App\Http\Controllers\UserController::class);
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
