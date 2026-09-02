@@ -42,12 +42,12 @@ class RoleSeeder extends Seeder
             ],
             [
                 'code' => 'pk',
-                'name' => 'PK (Pendamping Kelompok)',
+                'name' => 'PK',
                 'description' => 'Farmer Group Facilitator providing daily field guidance, technical assistance, harvest logging, and organic practice supervision.',
             ],
             [
                 'code' => 'pb',
-                'name' => 'PB (Pengolah & Pengepul)',
+                'name' => 'PB',
                 'description' => 'Processing & Collection Unit managing village collection points, sap weighing, cooking/crystallization processes, and inventory handovers.',
             ],
         ];

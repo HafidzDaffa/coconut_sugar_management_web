@@ -4,10 +4,18 @@ namespace Tests\Feature;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class RoleTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed();
+    }
     public function test_roles_exist_in_database(): void
     {
         $expectedCodes = ['superadmin', 'admin', 'qc', 'ics', 'expansi', 'csr', 'pk', 'pb'];
